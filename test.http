@@ -1,0 +1,24 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/birds
+
+###
+
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/7
+
+###
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "email": "aaa3@example.com",
+    "name": "sample",
+    "title": "engineer"
+}

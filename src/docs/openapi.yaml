@@ -1,0 +1,213 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: test
+  description: test
+paths:
+  /users:
+    get:
+      description: birds
+      responses:
+        '200':
+          description: aaa
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - id
+                        - email
+                        - name
+                        - title
+                      properties:
+                        id:
+                          type: number
+                        email:
+                          type: string
+                        name:
+                          type: string
+                          nullable: true
+                        title:
+                          type: string
+                          nullable: true
+        '400':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+    post:
+      description: create a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                title:
+                  type: string
+      responses:
+        '201':
+          description: create a user
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - email
+                  - name
+                  - title
+                properties:
+                  id:
+                    type: number
+                  email:
+                    type: string
+                  name:
+                    type: string
+                    nullable: true
+                  title:
+                    type: string
+                    nullable: true
+        '400':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+  /users/{id}:
+    get:
+      description: birds
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: aaa
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    required:
+                      - email
+                      - name
+                      - title
+                    properties:
+                      email:
+                        type: string
+                      name:
+                        type: string
+                        nullable: true
+                      title:
+                        type: string
+                        nullable: true
+        '400':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+  /birds:
+    get:
+      description: birds
+      responses:
+        '200':
+          description: aaa
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - name
+                        - age
+                      properties:
+                        name:
+                          type: string
+                        age:
+                          type: integer
