@@ -1,0 +1,15 @@
+version: '3'
+
+volumes:
+  express-test-db-volume:
+services:
+  test-db:
+    image: postgres:17.0-alpine
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: express-test
+      POSTGRES_PASSWORD: express-test
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - express-test-db-volume:/var/lib/postgresql/data
